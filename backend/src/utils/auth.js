@@ -1,0 +1,17 @@
+const jwt = require("jsonwebtoken");
+
+function generateToken(user) {
+  return jwt.sign(
+    {
+      userId: user.id,
+      role: user.role,
+    },
+    process.env.JWT_SECRET || "school-project-secret",
+    { expiresIn: "7d" }
+  );
+}
+
+module.exports = {
+  generateToken,
+};
+
